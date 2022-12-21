@@ -73,13 +73,15 @@ def main(folder: str = 'tests', output_filename: str = 'tests.txt'):
                     question = prev_question
                 to_be_skipped = False
             if not to_be_skipped:
-                question = f'{filename}. {question}'
+                # question = f'{filename}. {question}'
                 data[question] = sorted(correct_answers, key=lambda x: int(x.split('.')[0]))
             else:
                 print(f'[{filename}, card #{j}] Skip due unequal scores: {score} from {max_score}')
     s = ''
+    i = 0
     for question, answers in data.items():
-        s0 = f'Q: {question}\n' + '\n'.join(answers) + '\n\n'
+        i += 1
+        s0 = f'Q{i}: {question}\n' + '\n'.join(answers) + '\n\n'
         s += s0
     with open(output_filename, 'w', encoding='utf-8') as f:
         f.write(s)
