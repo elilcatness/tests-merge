@@ -39,6 +39,7 @@ def main(folder: str = 'tests', output_filename: str = 'tests.txt'):
             prev_question = None
             if score < max_score:
                 prev_question = question
+                # elem.dispose()
                 question = f'({score}) {question}'
             answers = (card.xpath('.//div[@class="answer"]//div[@class="r0"]') + 
                        card.xpath('.//div[@class="answer"]//div[@class="r1"]'))
